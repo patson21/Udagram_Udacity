@@ -33,7 +33,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     let { image_url } = req.query;
 
     if ( !image_url ) {
-      console.log("url is required")
+      //console.log("url is required")
       return res.status(400)
                 .send(`url is required!`);
     }
@@ -43,10 +43,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 try {
   let promise: string
     promise = await filterImageFromURL(image_url)
-    console.log("filterImageFromURL success!")
+    //console.log("filterImageFromURL success!")
       return res.status(200)
-              .send(`local url is ${promise}`);        
-            //.sendFile(await promise, () =>{deleteLocalFiles([promise])});
+            //.send(`local url is ${promise}`);        
+            .sendFile(await promise, () =>{deleteLocalFiles([promise])});
       
            
 } catch (error) {
